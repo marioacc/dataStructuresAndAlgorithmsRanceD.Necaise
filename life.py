@@ -29,7 +29,7 @@ class LifeGrid :
         return self._grid[row,col] == LifeGrid.LIVE_CELL
 
     def clearCell(self, row, col):
-        self._grid[row,col] == LifeGrid.DEAD_CELL
+        self._grid[row,col] = LifeGrid.DEAD_CELL
 
     def setCell(self, row, col):
         self._grid[row,col] = LifeGrid.LIVE_CELL
@@ -38,9 +38,9 @@ class LifeGrid :
         neighbors=0
         for i in range(row-1,row+2):
             for j in range (col-1,col+2):
-                if ( i>0 and i< self.numRows() and j>0 and j< self.numCols() and self.isLiveCell(row,col)):
-                    if i==row and j == col:
+                if i>=0 and i<self.numRows() and j>=0 and j<self.numCols():
+                    if i==row and j==col and self.isLiveCell(i,j):
                         neighbors+=0
-                    else:
-                        neighbors=neighbors+1
+                    elif  self.isLiveCell(i,j):
+                        neighbors+=1
         return neighbors

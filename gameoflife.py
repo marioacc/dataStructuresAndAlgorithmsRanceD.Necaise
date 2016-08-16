@@ -28,11 +28,11 @@ def evolve(grid):
             neighbors = grid.numLiveNeighbors(i,j)
             #Add the (i,j) tuple to liveCells if this cell contians a
             #live organism for the next generation
-            print("neighbors : {}".format(neighbors))
             if (neighbors == 2 and grid.isLiveCell(i,j)) or (neighbors ==3):
                 liveCells.append((i,j))
-    #Reconfigure the grid using the liveCells coord list
 
+
+    #Reconfigure the grid using the liveCells coord list
     grid.configure(liveCells)
 
 def draw(grid):
@@ -40,9 +40,9 @@ def draw(grid):
     for i in range(0,grid.numRows()):
         for j in range(0, grid.numCols()):
             if grid.isLiveCell(i,j):
-                textBasedGrid+="1"
+                textBasedGrid+=" 1"
             else:
-                textBasedGrid+="0"
+                textBasedGrid+=" 0"
         textBasedGrid+="\n"
     print (textBasedGrid)
 main()
